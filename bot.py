@@ -1,138 +1,55 @@
-import discord
-from discord.ext import commands
-from discord.utils import get
-import youtube_dl
-import os
-
-
-client = commands.Bot(command_prefix = "")
-client.remove_command('help')
-
-@client.event
-async def on_ready():
-    print('Bot is ready.')
-
-@client.event
-async def on_member_join(member):
-    print(f'(member) has joined a server.')
-@client.event
-async def on_member_remove(member):
-    print(f'(member) has left a server.')
-
-@client.command()
-async def clear(ctx,amount=5):
-    await ctx.channel.purge(limit=amount)
-
-
-@client.command()
-async def khela(ctx):
-    await ctx.channel.send("if you want to play you can call me")
-   
-@client.command()
-async def aaja(ctx):
-    await ctx.channel.send("if you want to play you can call me")
-
-@client.command()
-async def phone(ctx):
-    await ctx.channel.send("if you don't have my Phone no Then don't Bothere")
-@client.command()
-async def users(ctx):
-    id = client.get_guild(723567222735241257)
-    await ctx.channel.send(f"""Total Members in this Server is: {id.member_count}""")
-@client.command()
-async def hi(ctx):
-    await ctx.channel.send("hello")
-@client.command()
-async def help(ctx):  
-    embed = discord.Embed(title="What can killer Frost do?",description="Some useful commands")
-    embed.add_field(name="hi",value="Greets the user")
-    embed.add_field(name="users",value="Prints no of users")
-    embed.add_field(name="khela",value="message")
-    embed.add_field(name="join",value="add bot to voice channel")
-    embed.add_field(name="leave",value="remove bot from voice channel")
-    embed.add_field(name="play youtube link..",value="play the song")
-    embed.add_field(name="info",value="some basic details")
-    
-    await ctx.channel.send(content=None, embed=embed)
-@client.command()
-async def info(ctx):  
-    embed = discord.Embed(title="About Killerfrost?",description="Some details")
-    embed.add_field(name="Owner",value="Ishan rajpal")
-    embed.add_field(name="Capabilities",value="play music and do some stuffs")
-    await ctx.channel.send(content=None, embed=embed)
-@client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('valid command use karo please')
-
-@client.command(pass_context=True)
-async def join(ctx):
-    channel = ctx.message.author.voice.channel
-    voice = get(client.voice_clients, guild=ctx.guild)
-    
-    if voice and voice.is_connected():
-        await voice.move_to(channel)
-    else:
-        voice = await channel.connect()
-        print(f"the bot is connected to {channel}\n")
-
-    await ctx.send(f"joined{channel}")
-
-@client.command(pass_context=True)
-async def leave(ctx):
-    channel = ctx.message.author.voice.channel
-    voice = get(client.voice_clients, guild=ctx.guild)
-    
-    if voice and voice.is_connected():
-        await voice.disconnect()
-        print(f"the bot has left{channel}")
-        await ctx.send(f"left{channel}")
-    else:
-        print("not in one")
-        await ctx.send("not in one")
-
-@client.command(pass_context=True)
-async def play(ctx, url: str):
-    song_there = os.path.isfile("song.mp3")
-    try:
-        if song_there:
-            os.remove("song.mp3")
-            print("Removed old song file")
-    except PermissionError:
-        print("Trying to delete song file,but it is being played")
-        await ctx.send("Error: Music playing")
-        return
-    
-    await ctx.send("Getting everything ready now")
-
-    voice = get(client.voice_clients, guild=ctx.guild)
-
-    ydl_opts = {
-        'format':'bestaudio/best',
-        'postprocessors':[{
-            'key':'FFmpegExtractAudio',
-            'preferredcodec':'mp3',
-            'preferredquality':'192',
-        }],
-    }
-
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        print("Downloading audio now\n")
-        ydl.download([url])
-
-    for file in os.listdir("./"):
-        if file.endswith(".mp3"):
-            name = file
-            print(f"Renamed File: {file}\n")
-            os.rename(file, "song.mp3")
-    
-    voice.play(discord.FFmpegPCMAudio("song.mp3"), after=lambda e: print(f"{name} has finished playing"))
-    voice.source = discord.PCMVolumeTransformer(voice.source)
-    voice.source.volume = 0.9
-
-    nname = name.rsplit("-", 2)
-    await ctx.send(f"Playing:{nname}")
-    print("playing\n")
-
-client.run("NzM2MjE2MTM5OTY0ODc0NzY3.Xxrktg.89zLto9i2Kifmcb6mR_93JIbMhE")
-
+aiohttp==3.6.2
+astroid==2.4.2
+async-timeout==3.0.1
+attrs==19.3.0
+bandit==1.6.2
+beautifulsoup4==4.9.1
+certifi==2020.4.5.2
+cffi==1.14.0
+chardet==3.0.4
+colorama==0.4.3
+comtypes==1.1.7
+discord.py==1.3.4
+flake8==3.8.3
+gitdb==4.0.5
+GitPython==3.1.3
+gTTS==2.1.1
+gTTS-token==1.1.3
+idna==2.9
+isort==4.3.21
+lazy-object-proxy==1.4.3
+mccabe==0.6.1
+multidict==4.7.6
+mypy==0.780
+mypy-extensions==0.4.3
+numpy==1.18.5
+opencv-python==4.2.0.34
+pbr==5.4.5
+Pillow==7.2.0
+playsound==1.2.2
+PyAudio==0.2.11
+pycodestyle==2.6.0
+pycparser==2.20
+pyflakes==2.2.0
+PyNaCl==1.4.0
+pypiwin32==223
+python-git==2018.2.1
+pyttsx3==2.88
+pywin32==228
+PyYAML==5.3.1
+requests==2.24.0
+Send2Trash==1.5.0
+six==1.15.0
+smmap==3.0.4
+soupsieve==2.0.1
+SpeechRecognition==3.8.1
+stevedore==2.0.0
+toml==0.10.1
+typed-ast==1.4.1
+typing-extensions==3.7.4.2
+urllib3==1.25.9
+websockets==8.1
+wikipedia==1.4.0
+wrapt==1.12.1
+yarl==1.4.2
+youtube-dl==2020.6.16.1
