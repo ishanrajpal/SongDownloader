@@ -134,5 +134,5 @@ async def play(ctx, url: str):
     await ctx.send(f"Playing:{nname}")
     print("playing\n")
 
-client.run("NzM2MjE2MTM5OTY0ODc0NzY3.Xxrktg.89zLto9i2Kifmcb6mR_93JIbMhE")
+client.run(os.environ['Discord_token'])
 
