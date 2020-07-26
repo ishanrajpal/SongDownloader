@@ -93,7 +93,7 @@ async def leave(ctx):
 
 @client.command(pass_context=True)
 async def play(ctx, url: str):
-    song_there = os.environ['song.mp3']
+    song_there = os.environ["song.mp3"]
     try:
         if song_there:
             os.remove("song.mp3")
@@ -133,7 +133,6 @@ async def play(ctx, url: str):
     nname = name.rsplit("-", 2)
     await ctx.send(f"Playing:{nname}")
     print("playing\n")
-
     
 client.run(os.environ['Discord_token'])
 
