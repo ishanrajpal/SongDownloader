@@ -11,3 +11,4 @@ aiofiles
 imageio
 PyNaCl
 wheel
+Guild
