@@ -9,4 +9,5 @@ aiohttp
 Pillow
 aiofiles
 imageio
-
+PyNaCl
+wheel
