@@ -2,4 +2,10 @@ discord
 youtube_dl
 ffmpeg
 guild
-
+discord.py[voice]
+beautifulsoup4
+bs4
+aiohttp
+Pillow
+aiofiles
+imageio
