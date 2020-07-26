@@ -1,3 +1,6 @@
 discord
 youtube_dl
 ffmpeg
+ffprobe
+vprobe
+avconv
