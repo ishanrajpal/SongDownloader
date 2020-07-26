@@ -1,5 +1,4 @@
 discord
 youtube_dl
 ffmpeg
-ffmprobe
-ffplay
+
