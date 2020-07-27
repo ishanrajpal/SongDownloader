@@ -13,10 +13,17 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-    print(f'(member) has joined a server.')
+    print(f'{member} has joined a server.')                     #change
+    for channel in member.guild.channels:
+        if str(channel) == "general":
+            await channel.send(f"""Welcome to the server {member.mention}""")
 @client.event
 async def on_member_remove(member):
-    print(f'(member) has left a server.')
+    print(f'{member} has left a server.')
+    for channel in member.guild.channels:                   #change
+        if str(channel) == "general":
+            await channel.send(f"""Member has been Kicked/Removed from server {member.mention}""")
+
 
 @client.command()
 async def clear(ctx,amount=5):
