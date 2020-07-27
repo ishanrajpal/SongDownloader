@@ -132,7 +132,7 @@ async def play(ctx, url: str):
 
     nname = name.rsplit("-", 2)
     await ctx.send(f"Playing:{nname}")
-    print("playing\n")
+    print("playing\n") 
     
 client.run(os.environ['Discord_token'])
 
