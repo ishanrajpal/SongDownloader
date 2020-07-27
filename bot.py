@@ -24,7 +24,10 @@ async def on_member_remove(member):
         if str(channel) == "general":
             await channel.send(f"""Member has been Kicked/Removed from server {member.mention}""")
 
-
+@client.command()
+async def ping(ctx):                        #change
+    await ctx.send(f"Your ping is :{round(client.latency * 1000)} ms")
+    
 @client.command()
 async def clear(ctx,amount=5):
     await ctx.channel.purge(limit=amount)
@@ -58,6 +61,7 @@ async def help(ctx):
     embed.add_field(name="leave",value="remove bot from voice channel")
     embed.add_field(name="play youtube link..",value="play the song")
     embed.add_field(name="info",value="some basic details")
+    embed.add_field(name="ping",value="Tells you ping")
     
     await ctx.channel.send(content=None, embed=embed)
 @client.command()
