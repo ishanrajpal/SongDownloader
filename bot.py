@@ -60,6 +60,9 @@ async def help(ctx):
     embed.add_field(name="join",value="add bot to voice channel")
     embed.add_field(name="leave",value="remove bot from voice channel")
     embed.add_field(name="play youtube link..",value="play the song")
+    embed.add_field(name="pause",value="pause the song")
+    embed.add_field(name="resume",value="resume the song")
+    embed.add_field(name="stop",value="stop the song")
     embed.add_field(name="info",value="some basic details")
     embed.add_field(name="ping",value="Tells you ping")
     
@@ -144,5 +147,44 @@ async def play(ctx, url: str):
     await ctx.send(f"Playing:{nname}")
     print("playing\n") 
     
+
+@client.command(pass_context=True, aliases=['pa', 'pau'])
+async def pause(ctx):
+
+    voice = get(client.voice_clients, guild=ctx.guild)
+
+    if voice and voice.is_playing():
+        print("Music Paused")
+        voice.pause()
+        await ctx.send("Music paused")
+    else:
+        print("Music not playing failed pause")
+        await ctx.send("Music not playing failed pause ")
+
+@client.command(pass_context=True, aliases=['r', 'res'])
+async def resume(ctx):
+    voice = get(client.voice_clients, guild=ctx.guild)
+
+    if voice and voice.is_paused():
+        print("Resumed music")
+        voice.resume()
+        await ctx.send("Resumed music")
+    else:
+        print("Music is not pause")
+        await ctx.send("Music is not pause ")
+
+@client.command(pass_context=True, aliases=['s', 'sto'])
+async def stop(ctx):
+
+    voice = get(client.voice_clients, guild=ctx.guild)
+
+    if voice and voice.is_playing():
+        print("Music Stopped")
+        voice.stop()
+        await ctx.send("Music Stopped")
+    else:
+        print("No Music playing failed to Stop")
+        await ctx.send("No Music playing failed to Stop")
+
 client.run(os.environ['Discord_token'])
 
