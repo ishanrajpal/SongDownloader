@@ -9,6 +9,7 @@ client.remove_command('help')
 
 @client.event
 async def on_ready():
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('With my own life'))
     print('Bot is ready.')
 
 @client.event
