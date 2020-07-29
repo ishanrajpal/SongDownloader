@@ -4,6 +4,7 @@ from discord.utils import get
 import youtube_dl
 import os
 
+
 client = commands.Bot(command_prefix = "")
 client.remove_command('help')
 
