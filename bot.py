@@ -3,15 +3,19 @@ from discord.ext import commands
 from discord.utils import get
 import youtube_dl
 import os
+from os import system
+from discord import Spotify
+import shutil
 
 client = commands.Bot(command_prefix = "")
 client.remove_command('help')
 
+global name
+
 @client.event
 async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game('With my own life'))
-    print('Bot is ready.')
-
+    print("Logged in as: " + client.user.name + "\n")
 @client.event
 async def on_member_join(member):
     print(f'{member} has joined a server.')                     #change
@@ -81,6 +85,7 @@ async def on_command_error(ctx, error):
 
 @client.command(pass_context=True)
 async def join(ctx):
+    global voice
     channel = ctx.message.author.voice.channel
     voice = get(client.voice_clients, guild=ctx.guild)
     
@@ -130,10 +135,15 @@ async def play(ctx, url: str):
         }],
     }
 
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        print("Downloading audio now\n")
-        ydl.download([url])
-
+    try:    
+       with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            print("Downloading audio now\n")
+            ydl.download([url])
+            pass
+    except Exception as o:
+        print("Fallback: youtube-dl does not support this url ,using spotify")
+        system("spotdl -f " + '"' + "./" + '"' + " -s " + url +" -i " +"automatic")
+        
     for file in os.listdir("./"):
         if file.endswith(".mp3"):
             name = file
@@ -144,11 +154,15 @@ async def play(ctx, url: str):
     voice.source = discord.PCMVolumeTransformer(voice.source)
     voice.source.volume = 0.9
 
-    nname = name.rsplit("-", 2)
-    await ctx.send(f"Playing:{nname}")
-    print("playing\n") 
-    
+    try:
+        nname = name.rsplit("-", 2)
+        await ctx.send(f"Playing: {nname[0]}")
+    except:
+        await ctx.send(f"Playing Song")
 
+    print("playing\n")
+    await ctx.send(f"Playing: {nname[0]}")
+    
 @client.command(pass_context=True, aliases=['pa', 'pau'])
 async def pause(ctx):
 
