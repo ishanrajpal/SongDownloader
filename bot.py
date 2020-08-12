@@ -7,6 +7,7 @@ from os import system
 from discord import Spotify
 import shutil
 
+
 client = commands.Bot(command_prefix = "")
 client.remove_command('help')
 
