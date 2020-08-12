@@ -6,7 +6,6 @@ import os
 from os import system
 from discord import Spotify
 import shutil
-import spotdl
 
 
 client = commands.Bot(command_prefix = "")
