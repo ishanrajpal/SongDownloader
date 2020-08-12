@@ -6,6 +6,7 @@ import os
 from os import system
 from discord import Spotify
 import shutil
+import spotdl
 
 
 client = commands.Bot(command_prefix = "")
@@ -113,6 +114,7 @@ async def leave(ctx):
 
 @client.command(pass_context=True)
 async def play(ctx, url: str):
+    
     song_there = os.environ["song.mp3"]
     try:
         if song_there:
@@ -151,7 +153,7 @@ async def play(ctx, url: str):
             print(f"Renamed File: {file}\n")
             os.rename(file, "song.mp3")
     
-    voice.play(discord.FFmpegPCMAudio("song.mp3"), after=lambda e: print(f"{name} has finished playing"))
+    voice.play(discord.FFmpegPCMAudio("song.mp3"), after=lambda e: print("Played the song"))
     voice.source = discord.PCMVolumeTransformer(voice.source)
     voice.source.volume = 0.9
 
