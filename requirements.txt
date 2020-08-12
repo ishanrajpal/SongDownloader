@@ -12,3 +12,4 @@ imageio
 PyNaCl
 wheel
 Guild
+spotdl
