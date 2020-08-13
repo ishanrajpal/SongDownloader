@@ -136,7 +136,6 @@ async def play(ctx, url: str):
             'preferredquality':'192',
         }],
     }
-
     try:    
        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
