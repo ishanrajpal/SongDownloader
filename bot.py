@@ -24,12 +24,20 @@ async def on_member_join(member):
     for channel in member.guild.channels:
         if str(channel) == "general":
             await channel.send(f"""Welcome to the server {member.mention}""")
+            await channel.send("Member += 1")
+            member_count = len(channel.guild.members)
+            await channel.send(f"""Total Members in this Server is: {member_count}""")
+
 @client.event
 async def on_member_remove(member):
     print(f'{member} has left a server.')
     for channel in member.guild.channels:                   #change
         if str(channel) == "general":
             await channel.send(f"""Member has been Kicked/Removed from server {member.mention}""")
+            await channel.send("Member -= 1")
+            member_count = len(channel.guild.members)
+            await channel.send(f"""Total Members in this Server is: {member_count}""")
+
 
 @client.command()
 async def ping(ctx):                        #change
@@ -51,13 +59,22 @@ async def aaja(ctx):
 @client.command()
 async def phone(ctx):
     await ctx.channel.send("if you don't have my Phone no Then don't Bothere")
+
+@client.command()
+async def what(ctx):
+    await ctx.channel.send("nothing")
+
 @client.command()
 async def users(ctx):
-    id = client.get_guild(723567222735241257)
-    await ctx.channel.send(f"""Total Members in this Server is: {id.member_count}""")
+    member_count = len(ctx.guild.members)
+    await ctx.channel.send(f"""Total Members in this Server is: {member_count}""")
 @client.command()
 async def hi(ctx):
     await ctx.channel.send("hello")
+async def no(ctx):
+    await ctx.channel.send("ok")
+async def mention(ctx):
+    await ctx.channel.send("@everyone Khela?")
 @client.command()
 async def help(ctx):  
     embed = discord.Embed(title="What can killer Frost do?",description="Some useful commands")
@@ -66,18 +83,20 @@ async def help(ctx):
     embed.add_field(name="khela",value="message")
     embed.add_field(name="join",value="add bot to voice channel")
     embed.add_field(name="leave",value="remove bot from voice channel")
-    embed.add_field(name="play youtube link..",value="play the song")
+    embed.add_field(name="play youtube/Spotify link..",value="play the song")   ##to be 
     embed.add_field(name="pause",value="pause the song")
     embed.add_field(name="resume",value="resume the song")
     embed.add_field(name="stop",value="stop the song")
     embed.add_field(name="info",value="some basic details")
-    embed.add_field(name="ping",value="Tells you ping")
+    embed.add_field(name="ping",value="Tells you ping/Current Latency")
     
     await ctx.channel.send(content=None, embed=embed)
 @client.command()
 async def info(ctx):  
     embed = discord.Embed(title="About Killerfrost?",description="Some details")
     embed.add_field(name="Owner",value="Ishan rajpal")
+    embed.add_field(name="Creater Discord I'd",value='KillerFrost#9884')        ##
+    embed.add_field(name="Main server",value="Hellplay")                        ##to be added
     embed.add_field(name="Capabilities",value="play music and do some stuffs")
     await ctx.channel.send(content=None, embed=embed)
 @client.event
