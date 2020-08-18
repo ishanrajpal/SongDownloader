@@ -71,9 +71,11 @@ async def users(ctx):
 @client.command()
 async def hi(ctx):
     await ctx.channel.send("hello")
+@client.command()
 async def no(ctx):
     await ctx.channel.send("ok")
-async def mention(ctx):
+@client.command()
+async def all(ctx):
     await ctx.channel.send("@everyone Khela?")
 @client.command()
 async def help(ctx):  
