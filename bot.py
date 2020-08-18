@@ -99,6 +99,8 @@ async def help(ctx):
     embed.add_field(name="stop",value="stop the song")
     embed.add_field(name="info",value="some basic details")
     embed.add_field(name="all",value="mention everyone to play")
+    embed.add_field(name="avatar@user",value="pop up his/her display")
+    
     
     embed.add_field(name="ping",value="Tells you ping/Current Latency")
     
