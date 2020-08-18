@@ -119,6 +119,9 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('valid command use karo please')
 
+@client.command()
+async def chutia(ctx):
+    await ctx.channel.send("one with black mask")
 @client.command(pass_context=True)
 async def join(ctx):
     global voice
