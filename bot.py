@@ -44,6 +44,14 @@ async def ping(ctx):                        #change
     await ctx.send(f"Your ping is :{round(client.latency * 1000)} ms")
     
 @client.command()
+async def avatar(ctx, member: discord.Member):
+    show_avatar = discord.Embed(
+
+        color = discord.Color.dark_blue()
+    )
+    show_avatar.set_image(url='{}'.format(member.avatar_url))
+    await ctx.send(embed=show_avatar)
+@client.command()
 async def clear(ctx,amount=5):
     await ctx.channel.purge(limit=amount)
 
@@ -90,6 +98,8 @@ async def help(ctx):
     embed.add_field(name="resume",value="resume the song")
     embed.add_field(name="stop",value="stop the song")
     embed.add_field(name="info",value="some basic details")
+    embed.add_field(name="all",value="mention everyone to play")
+    
     embed.add_field(name="ping",value="Tells you ping/Current Latency")
     
     await ctx.channel.send(content=None, embed=embed)
