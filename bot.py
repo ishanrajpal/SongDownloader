@@ -112,7 +112,7 @@ async def info(ctx):
     embed.add_field(name="Creater Discord I'd",value='KillerFrost#9884')        ##
     embed.add_field(name="Main server",value="Hellplay")                        ##to be added
     embed.add_field(name="Capabilities",value="play music and do some stuffs")
-    embed.add_field(name="Add me",value="https://discord.com/api/oauth2/authorize?client_id=736216139964874767&permissions=8&scope=bot")
+    embed.add_field(name="Instagram",value="ishan_rajpal")
     await ctx.channel.send(content=None, embed=embed)
 @client.event
 async def on_command_error(ctx, error):
