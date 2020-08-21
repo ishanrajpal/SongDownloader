@@ -84,8 +84,9 @@ async def no(ctx):
     await ctx.channel.send("ok")
 @client.command()
 async def all(ctx):
-    await ctx.channel.send("@everyone Khele?")
     await ctx.channel.purge(limit=1)
+    await ctx.channel.send("@everyone Khele?")
+  
 @client.command()
 async def help(ctx):  
     embed = discord.Embed(title="What can killer Frost do?",description="Some useful commands")
