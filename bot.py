@@ -84,8 +84,8 @@ async def no(ctx):
     await ctx.channel.send("ok")
 @client.command()
 async def all(ctx):
-    await ctx.channel.send("clear 2")
     await ctx.channel.send("@everyone Khele?")
+    await ctx.channel.purge(limit=1)
 @client.command()
 async def help(ctx):  
     embed = discord.Embed(title="What can killer Frost do?",description="Some useful commands")
@@ -123,7 +123,7 @@ async def on_command_error(ctx, error):
 @client.command()
 async def chutia(ctx):
     await ctx.channel.send("Tu chutia")
-@client.command(pass_context=True)
+@client.command(pass_context=True,aliases=['j', 'Join'])
 async def join(ctx):
     global voice
     channel = ctx.message.author.voice.channel
@@ -204,7 +204,7 @@ async def play(ctx, url: str):
     print("playing\n")
     await ctx.send(f"Playing: {nname[0]}")
     
-@client.command(pass_context=True, aliases=['pa', 'pau'])
+@client.command(pass_context=True, aliases=['p', 'pau'])
 async def pause(ctx):
 
     voice = get(client.voice_clients, guild=ctx.guild)
