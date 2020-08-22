@@ -68,7 +68,7 @@ async def aaja(ctx):
 async def phone(ctx):
     await ctx.channel.send("if you don't have my Phone no Then don't Bothere")
 
-@client.command()
+@client.command(pass_context = True,aliases = ['why','kya'])
 async def what(ctx):
     await ctx.channel.send("nothing")
 
