@@ -111,10 +111,10 @@ async def help(ctx):
 async def info(ctx):  
     embed = discord.Embed(title="About Killerfrost?",description="Some details")
     embed.add_field(name="Owner",value="Ishan rajpal")
-    embed.add_field(name="Creater Discord I'd",value='KillerFrost#9884')        ##
+    embed.add_field(name="Creater Discord I'd",value='Ishan#9884')        ##
     embed.add_field(name="Main server",value="Hellplay")                        ##to be added
     embed.add_field(name="Capabilities",value="play music and do some stuffs")
-    embed.add_field(name="Instagram",value="ishan_rajpal")
+    embed.add_field(name="Instagram",value="https://www.instagram.com/ishan_rajpal/?hl=en")
     await ctx.channel.send(content=None, embed=embed)
 @client.event
 async def on_command_error(ctx, error):
