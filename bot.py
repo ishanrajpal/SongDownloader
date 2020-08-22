@@ -151,7 +151,7 @@ async def leave(ctx):
         print("not in one")
         await ctx.send("not in one")
 
-@client.command(pass_context=True, aliases=['Play', 'sing'])
+@client.command(pass_context=True, aliases=['Play', 'sing','Sing'])
 async def play(ctx, url: str):
     
     song_there = os.environ["song.mp3"]
