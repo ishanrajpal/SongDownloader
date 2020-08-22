@@ -79,7 +79,7 @@ async def users(ctx):
 @client.command()
 async def hi(ctx):
     await ctx.channel.send("hello")
-@client.command()
+@client.command(pass_context=True,aliases=['ok', 'so'])
 async def no(ctx):
     await ctx.channel.send("ok")
 @client.command()
@@ -87,7 +87,7 @@ async def all(ctx):
     await ctx.channel.purge(limit=1)
     await ctx.channel.send("@everyone Khele?")
   
-@client.command()
+@client.command(pass_context=True,aliases=['h', 'Help'])
 async def help(ctx):  
     embed = discord.Embed(title="What can killer Frost do?",description="Some useful commands")
     embed.add_field(name="hi",value="Greets the user")
@@ -138,7 +138,7 @@ async def join(ctx):
 
     await ctx.send(f"joined{channel}")
 
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=['l','Leave'])
 async def leave(ctx):
     channel = ctx.message.author.voice.channel
     voice = get(client.voice_clients, guild=ctx.guild)
@@ -151,7 +151,7 @@ async def leave(ctx):
         print("not in one")
         await ctx.send("not in one")
 
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=['Play', 'sing'])
 async def play(ctx, url: str):
     
     song_there = os.environ["song.mp3"]
