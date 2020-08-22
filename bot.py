@@ -52,7 +52,7 @@ async def avatar(ctx, member: discord.Member):
     show_avatar.set_image(url='{}'.format(member.avatar_url))
     await ctx.send(embed=show_avatar)
 @client.command()
-async def clear(ctx,amount=5):
+async def clean(ctx,amount=5):
     await ctx.channel.purge(limit=amount)
 
 
