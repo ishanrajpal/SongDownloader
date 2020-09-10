@@ -60,7 +60,7 @@ async def khela(ctx):
     await ctx.channel.send("if you want to play you can call me")
    
 @client.command()
-async def aaja(ctx):
+async def Aaja(ctx):
     await ctx.channel.send("if you want to play you can call me")
 
 
