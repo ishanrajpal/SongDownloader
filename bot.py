@@ -218,7 +218,7 @@ async def pause(ctx):
         print("Music not playing failed pause")
         await ctx.send("Music not playing failed pause ")
 
-@client.command(pass_context=True, aliases=['r', 'res'])
+@client.command(pass_context=True, aliases=['r', 'res','R'])
 async def resume(ctx):
     voice = get(client.voice_clients, guild=ctx.guild)
 
