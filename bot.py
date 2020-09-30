@@ -27,6 +27,7 @@ async def on_member_join(member):
             await channel.send("Member += 1")
             member_count = len(channel.guild.members)
             await channel.send(f"""Total Members in this Server is: {member_count}""")
+            await channel.send(f"""Yo{member.mention}!what's up!""")
 
 @client.event
 async def on_member_remove(member):
@@ -37,7 +38,7 @@ async def on_member_remove(member):
             await channel.send("Member -= 1")
             member_count = len(channel.guild.members)
             await channel.send(f"""Total Members in this Server is: {member_count}""")
-
+            
 
 @client.command()
 async def ping(ctx):                        #change
