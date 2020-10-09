@@ -28,7 +28,7 @@ async def on_member_join(member):
             member_count = len(channel.guild.members)
             await channel.send(f"""Total Members in this Server is: {member_count}""")
             await channel.send(f"""avatar {member.mention}""")
-            await ctx.channel.purge(limit=2)
+            #await ctx.channel.purge(limit=2)
 
 @client.event
 async def on_member_remove(member):
