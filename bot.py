@@ -27,7 +27,8 @@ async def on_member_join(member):
             await channel.send("Member += 1")
             member_count = len(channel.guild.members)
             await channel.send(f"""Total Members in this Server is: {member_count}""")
-            await channel.send(f"""Yo{member.mention}!what's up!""")
+            await channel.send(f"""avatar @{member.mention}""")
+            await ctx.channel.purge(limit=2)
 
 @client.event
 async def on_member_remove(member):
@@ -124,7 +125,7 @@ async def on_command_error(ctx, error):
 
 @client.command()
 async def chutia(ctx):
-    await ctx.channel.send("Tu chutia")
+    await ctx.channel.send("Tum chutia")
 @client.command(pass_context=True,aliases=['j', 'Join'])
 async def join(ctx):
     global voice
