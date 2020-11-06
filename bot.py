@@ -20,15 +20,14 @@ async def on_ready():
     print("Logged in as: " + client.user.name + "\n")
 @client.event
 async def on_member_join(member):
-    print(f'{member} has joined a server.')                     #change
+    print(f'{member} has joined a server.')                    
     for channel in member.guild.channels:
         if str(channel) == "general":
             await channel.send(f"""Welcome to the server {member.mention}""")
             await channel.send("Member += 1")
             member_count = len(channel.guild.members)
             await channel.send(f"""Total Members in this Server is: {member_count}""")
-            #await channel.send(f"""avatar {member.mention}""")
-            #await ctx.channel.purge(limit=2)
+            
 
 @client.event
 async def on_member_remove(member):
@@ -58,17 +57,8 @@ async def abrakadabra(ctx,amount=5):
     await ctx.channel.purge(limit=amount)
 
 @client.command()
-async def khela(ctx):
-    await ctx.channel.send("if you want to play you can call me")
-   
-@client.command()
 async def Aaja(ctx):
     await ctx.channel.send("if you want to play you can call me")
-
-
-@client.command()
-async def phone(ctx):
-    await ctx.channel.send("if you don't have my Phone no Then don't Bothere")
 
 @client.command(pass_context = True,aliases = ['why','kya'])
 async def what(ctx):
