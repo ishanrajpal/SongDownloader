@@ -20,6 +20,10 @@ async def on_ready():
     print("Logged in as: " + client.user.name + "\n")
 @client.event
 async def on_member_join(member):
+    mention=member.mention
+    guild=member.guild
+    await member.create_dm()
+    await member.dm_channel.send(str(f"{mention},Welcome to the {guild}").format(mention=mention,guild=guild))
     print(f'{member} has joined a server.')                    
     for channel in member.guild.channels:
         if str(channel) == "general":
@@ -94,8 +98,6 @@ async def help(ctx):
     embed.add_field(name="info",value="some basic details")
     embed.add_field(name="all",value="mention everyone to play")
     embed.add_field(name="avatar@user",value="pop up his/her display")
-    
-    
     embed.add_field(name="ping",value="Tells you ping/Current Latency")
     
     await ctx.channel.send(content=None, embed=embed)
