@@ -88,7 +88,7 @@ async def help(ctx):
     embed = discord.Embed(title="What can killer Frost do?",description="Some useful commands")
     embed.add_field(name="hi",value="Greets the user")
     embed.add_field(name="users",value="Prints no of users")
-    embed.add_field(name="khela",value="message")
+    ##embed.add_field(name="khela",value="message")
     embed.add_field(name="join",value="add bot to voice channel")
     embed.add_field(name="leave",value="remove bot from voice channel")
     embed.add_field(name="play youtube/Spotify link..",value="play the song")   ##to be 
