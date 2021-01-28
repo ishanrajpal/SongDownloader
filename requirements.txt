@@ -1,5 +1,5 @@
 discord
-youtube_dl==2020.7.28
+youtube_dl==2021.1.24.1
 ffmpeg
 guild
 discord.py[voice]
@@ -12,4 +12,4 @@ imageio
 PyNaCl
 wheel
 Guild
-spotdl
+spotdl==3.3.1
